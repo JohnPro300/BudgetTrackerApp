@@ -5,16 +5,19 @@ A RESTful budget tracking API built with Node.js, Express, MongoDB, and Mongoose
 
 ## Features
 
-- User Registration and Login 
-- JWT Authentication 
-- Role-Based Access Control (Admin and Standard Users) 
-- Add/edit/delete and view Transaction (income and expenses) 
-- Dynamic Category Management (Category customisation)
-- Set monthly/category budget limits, track spending and limit. 
-- Data validation: it is to ensure the correct data types 
-- Report Generation 
+- User Registration and Login  
+- JWT Authentication  
+- Role-Based Access Control (Admin and Standard Users)  
+- Add/edit/delete and view Transaction (income and expenses)  
+- Dynamic Category Management (Category customisation) 
+- Set monthly/category budget limits, track spending and limit.  
+- Generate Budget Reports  
+- View Budget History 
 - Search & Filter Engine 
-- Budget Notifications (budget limit warnings, reminders) 
+- Data Input Validation and Error Handling 
+- External Email Service (send email notifications or budget alerts 
+to the users if a user exceeds 80% or 100% of their monthly 
+budget)
 
 ## Tech Stack
 
