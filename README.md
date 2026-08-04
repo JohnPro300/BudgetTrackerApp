@@ -1,8 +1,7 @@
 
 # Budget Tracker App
 
-A RESTful budget tracking API built with Node.js, Express, MongoDB, and Mongoose.
-
+A RESTful budget tracking API built with Node.js, Express and Mongoose.
 ## Features
 
 - User Registration and Login  
@@ -23,29 +22,21 @@ budget)
 
 - Node.js
 - Express
-- MongoDB / Mongoose
-- JSON Web Tokens (JWT)
-- Nodemailer for email notifications
-- Express-validator for input validation
-- Express-rate-limit for basic security
+- MongoDB + Mongoose
+- JWT authentication
+- Nodemailer email alerts
+- express-validator input validation
+- express-rate-limit security
 
-## Getting Started
+## Quick start
 
-### Prerequisites
-
-- Node.js 18+ installed
-- MongoDB available locally or remotely
-- SMTP credentials for email notifications
-
-### Install dependencies
+1. Install dependencies
 
 ```bash
 npm install
 ```
 
-### Environment Variables
-
-Create a `.env` file in the project root and configure the following values:
+2. Create a `.env` file in the project root with these values:
 
 ```env
 PORT=5000
@@ -63,51 +54,45 @@ EMAIL_PASS=your-email-password
 EMAIL_FROM="Budget Tracker <your-email@example.com>"
 ```
 
-> For Gmail SMTP, use an app password with 2FA enabled.
-
-### Run the app
+3. Start development mode
 
 ```bash
-npm start
+npm run dev
 ```
 
-The API will be available at `http://localhost:5000`.
+4. Open the API at:
 
-## API Overview
+```text
+http://localhost:5000
+```
 
-Base route: `/api`
+## Main API routes
 
 ### Authentication
 
-- `POST /api/auth/register` — register a new user
-- `POST /api/auth/login` — authenticate and receive tokens
+- `POST /api/auth/register` — register new user
+- `POST /api/auth/login` — login and receive tokens
 - `POST /api/auth/refresh` — refresh access token
-- `POST /api/auth/logout` — logout user (protected)
-- `GET /api/auth/me` — get current user profile (protected)
+- `POST /api/auth/logout` — logout current user
+- `GET /api/auth/me` — get current user profile
 
 ### Transactions
 
-Protected routes under `/api/transactions`:
-
-- `GET /api/transactions` — list transactions with filters
-- `GET /api/transactions/:id` — get a single transaction
-- `POST /api/transactions` — create a transaction
+- `GET /api/transactions` — list all transactions
+- `GET /api/transactions/:id` — get one transaction
+- `POST /api/transactions` — add a transaction
 - `PUT /api/transactions/:id` — update a transaction
 - `DELETE /api/transactions/:id` — delete a transaction
 
 ### Budgets
 
-Protected routes under `/api/budgets`:
-
-- `GET /api/budgets` — list budgets for current user
+- `GET /api/budgets` — list budgets
 - `GET /api/budgets/:id` — get budget details
 - `POST /api/budgets` — create a budget
 - `PUT /api/budgets/:id` — update a budget
 - `DELETE /api/budgets/:id` — delete a budget
 
 ### Categories
-
-Protected routes under `/api/categories`:
 
 - `GET /api/categories` — list categories
 - `GET /api/categories/:id` — get category details
@@ -117,39 +102,32 @@ Protected routes under `/api/categories`:
 
 ### Reports
 
-Protected routes under `/api/reports`:
-
-- `GET /api/reports/summary` — monthly summary report
-- `GET /api/reports/by-category` — spending by category
-- `GET /api/reports/budget-performance` — budget performance metrics
+- `GET /api/reports/summary` — monthly spending summary
+- `GET /api/reports/by-category` — spending per category
+- `GET /api/reports/budget-performance` — budget progress metrics
 - `GET /api/reports/history` — budget history
 
-### Users (Admin only)
+### Admin user management
 
-Protected routes under `/api/users` for admin users:
-
-- `GET /api/users` — list all users
+- `GET /api/users` — list users
 - `GET /api/users/:id` — get user details
-- `PATCH /api/users/:id/status` — toggle user active status
-- `PATCH /api/users/:id/role` — change user role
-- `DELETE /api/users/:id` — delete a user
+- `PATCH /api/users/:id/status` — change active status
+- `PATCH /api/users/:id/role` — update user role
+- `DELETE /api/users/:id` — delete user
 
-## Budget Alerts
+## Budget alerts
 
-When an expense transaction is created or updated, the app checks relevant budgets and sends email alerts if:
+The app sends email notifications when budget usage reaches:
 
-- Spending reaches 80% of the budget limit
-- Spending exceeds 100% of the budget limit
-
-Alerts are tracked per budget so the same email is not repeatedly sent for the same threshold.
+- 80% of the budget
+- 100% or more of the budget
 
 ## Notes
 
-- The app uses bearer token authentication for protected endpoints.
-- Customize categories and budgets per user.
-- The health check endpoint is available at `GET /api/health`.
+- Protected endpoints require a bearer token
+- Categories, budgets, and transactions are user-specific
+- Use `npm start` for production and `npm run dev` for development
 
 ## License
 
 This project is provided as-is.
-
