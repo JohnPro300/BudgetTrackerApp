@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Budget Tracker App
 
 A RESTful budget tracking API built with Node.js, Express, MongoDB, and Mongoose.
@@ -148,3 +149,7 @@ Alerts are tracked per budget so the same email is not repeatedly sent for the s
 ## License
 
 This project is provided as-is.
+=======
+# BudgetTrackerApp
+Budget Tracker App: A modern budgeting backend with user auth, transactions, categories, budgets, reports, and email support. Built with Node.js, organized controllers/services/models, and ready for secure financial tracking and reporting.
+>>>>>>> b4daf0e3944c87500a9ed6632788d32f6b0c7596
