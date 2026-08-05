@@ -1,4 +1,3 @@
-import dns from 'dns';
 import mongoose from 'mongoose';
 
 /**
@@ -12,14 +11,13 @@ const connectDB = async () => {
       throw new Error('MongoDB URI is not defined. Set MONGODB_URI or MONGO_URI in your environment.');
     }
 
-    // Check if the MongoDB host is reachable
     const conn = await mongoose.connect(mongoURI, {
       serverSelectionTimeoutMS: 10000,
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
+
+    console.info(`MongoDB connected: ${conn.connection.host}`);
   } catch (error) {
     console.error(` MongoDB connection error: ${error.message}`);
-    
   }
 };
 
